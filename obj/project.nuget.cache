@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Fhm3q+nbUkF5EJ1fg6R+0771lqTOIcNieMHeHzsls3G7nYysVchN/ADL7S6XLFwIzOtqAnyF5+nthjmg/0LdAQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Emily Cabrera\\FirstIonideProject\\FirstIonideProject.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Emily Cabrera\\.nuget\\packages\\fsharp.core\\8.0.200\\fsharp.core.8.0.200.nupkg.sha512"
+  ],
+  "logs": []
+}
