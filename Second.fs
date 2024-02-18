@@ -24,4 +24,17 @@ let parseline (line: string) = //string -> option<TeamInfo>
 
 // Function to calculate the goal difference
 
-let calculateGoalDifference (team: )
+let calculateGoalDifference (team: TeamInfo) = abs (team.GoalsFor - team.GoalsAgainst) 
+
+// Main function to find the team with the smallest goal difference
+
+let findTeamWithSmallestDifference (filePath: string) = 
+    let data = File.ReadAllLines( filePath) |> Seq.skip  1 |> List.ofSeq
+    let teamData : TeamInfo list =
+        data 
+        |> List.choose parseline
+        |> List.sortBy calculateGoalDifference 
+    match teamData with
+    | [] -> None
+    | smallestDiffTeam :: _ -> 
+        Some smallestDiffTeam.Team
