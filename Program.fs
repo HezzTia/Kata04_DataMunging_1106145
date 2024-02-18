@@ -28,3 +28,11 @@ let parseLine (line: string) =
         let minTemp: float = 
             match Regex.Match(input = minTempwithAsterisk, pattern = @"(\d+\.\d*)\*?").Groups.[1].Value with
             | "" -> failwith message = $"Error parsing MinT field: {line}"
+            | numericPart : string -> float numericPart
+        
+        { dayNumber = dayNumber; maxTemp = maxTemp; minTemp = minTemp }
+    with
+    | :? System.FormatException ->
+        failwith $"Error parsing line: {line}"
+
+let 
