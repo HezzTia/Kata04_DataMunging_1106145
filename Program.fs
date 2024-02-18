@@ -35,4 +35,26 @@ let parseLine (line: string) =
     | :? System.FormatException ->
         failwith $"Error parsing line: {line}"
 
-let 
+let calculateTempSpread (day: WeatherInfo) = day.maxTemp - day.minTemp
+
+
+let processWeatherData (filePath: string) =
+    let data: string list = File.ReadAllLines(filePath) |> Seq.skip count = 2 |> List.ofSeq
+    let parsedData: WeatherInfo list =
+        try
+            List.map parseLine data
+        with
+        | ex: exn ->
+            printfn "Exception ocurred while parsing data: %s" {ex.ToString()}
+            []
+    if parsedData <> [] then
+        let minSpreadDay: WeatherInfo = parsedData |> List.minBy calculateTempSpread
+            printfn "Day with smallest temperature spread: %d with %f degrees" minSpreadDay.dayNumber minSpreadDay.maxTemp
+    else
+        printfn "No valid data found in file."
+
+
+let main () =
+    processWeatherData filePath = @"C:\Users\Emily Cabrera\FirstIonideProject\weather.dat"
+
+main()
